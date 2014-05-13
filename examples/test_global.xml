@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE system PUBLIC "-//LIACS//DTD ESPAM 1//EN"
+"http://www.liacs.nl/~cserc/dtd/espam_1.dtd">
+
+<system name="mySystem">
+    <scheduler name="sched_0" algorithm="EDF" type="global" mapping="mapping_0" />
+
+    <task name="Psrc" wcet="3"  readDelay="0" writeDelay="2" startTime="0"  period="8"  deadline="8"  priority="1" type="migrating" />
+    <task name="Pf1"  wcet="4"  readDelay="2" writeDelay="2" startTime="8"  period="12" deadline="12" priority="2" type="migrating" />
+    <task name="Pf2"  wcet="20" readDelay="2" writeDelay="2" startTime="24" period="24" deadline="24" priority="3" type="migrating" />
+    <task name="Psnk" wcet="2"  readDelay="2" writeDelay="0" startTime="32" period="8"  deadline="8"  priority="4" type="migrating" />
+
+    <processor name="mb_0" scheduler="sched_0" />
+    <processor name="mb_1" scheduler="sched_0" />
+    <processor name="mb_2" scheduler="sched_0" />
+    <processor name="mb_3" scheduler="sched_0" />
+
+    <mapping name="mapping_0">
+       <processor name="mb_0">
+           <task name="Psrc" />
+           <task name="Pf1" />
+           <task name="Pf2" />
+           <task name="Psnk" />
+       </processor>
+       <processor name="mb_1">
+           <task name="Psrc" />
+           <task name="Pf1" />
+           <task name="Pf2" />
+           <task name="Psnk" />
+       </processor>
+       <processor name="mb_2">
+           <task name="Psrc" />
+           <task name="Pf1" />
+           <task name="Pf2" />
+           <task name="Psnk" />
+       </processor>
+       <processor name="mb_3">
+           <task name="Psrc" />
+           <task name="Pf1" />
+           <task name="Pf2" />
+           <task name="Psnk" />
+       </processor>
+    </mapping>
+</system>

@@ -1,0 +1,55 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE system PUBLIC "-//LIACS//DTD ESPAM 1//EN"
+"http://www.liacs.nl/~cserc/dtd/espam_1.dtd">
+
+<system name="mySystem">
+    <scheduler name="sched_0" algorithm="EDF" type="partitioned" mapping="mapping_0" />
+    <scheduler name="sched_1" algorithm="EDF" type="partitioned" mapping="mapping_1" />
+<!--
+    <scheduler name="sched_2" algorithm="EDF" type="partitioned" mapping="mapping_2" />
+    <scheduler name="sched_3" algorithm="EDF" type="partitioned" mapping="mapping_3" /> 
+-->
+
+    <task name="Psrc" wcet="3"  readDelay="0" writeDelay="2" startTime="0"  period="16"  deadline="16"  priority="1" type="migrating" />
+    <task name="Pf1"  wcet="4"  readDelay="2" writeDelay="2" startTime="48"  period="24" deadline="24" priority="2" type="migrating" />
+    <task name="Pf2"  wcet="20" readDelay="2" writeDelay="2" startTime="48" period="48" deadline="48" priority="3" type="migrating" />
+    <task name="Psnk" wcet="2"  readDelay="2" writeDelay="0" startTime="96" period="16"  deadline="16"  priority="4" type="migrating" />
+
+    <processor name="mb_0" scheduler="sched_0" />
+    <processor name="mb_1" scheduler="sched_1" />
+<!--    
+    <processor name="mb_2" scheduler="sched_1" />
+    <processor name="mb_3" scheduler="sched_0" />
+-->
+
+    <fifo name="E1" size="10" />
+    <fifo name="E2" size="10" />
+    <fifo name="E3" size="10" />
+    <fifo name="E4" size="10" />
+    <fifo name="E5" size="10" />
+
+    <mapping name="mapping_0">
+       <processor name="mb_0">
+           <task name="Psrc" />
+           <task name="Psnk" />
+       </processor>
+    </mapping>
+    <mapping name="mapping_1">
+       <processor name="mb_1">
+           <task name="Pf1" />
+           <task name="Pf2" />
+       </processor>
+    </mapping>
+<!--
+    <mapping name="mapping_2">
+       <processor name="mb_2">
+           <task name="Pf2" />
+       </processor>
+    </mapping>
+    <mapping name="mapping_3">
+       <processor name="mb_3">
+           <task name="Psnk" />
+       </processor>
+    </mapping>
+-->
+</system>
